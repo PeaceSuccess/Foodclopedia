@@ -25,7 +25,11 @@ const searchIndex = process.env.AZURE_SEARCH_INDEX;
 const openaiClient = new OpenAIClient(azureOpenaiEndpoint, new AzureKeyCredential(azureOpenaiKey));
 
 app.get('/', (_, response) => {
-  response.sendFile(path.join(process.cwd(), 'index.html'));
+  response.send("<h1>It works! Go to https://foodclopediang.azurewebsites.net/chat to access the API</h1>");
+});
+
+app.get("/chat", (_, response) => {
+  response.send("<h1>This is a GET request. You should be making a POST request instead</h1>");
 });
 
 app.post('/chat', async (request, response) => {
